@@ -31,6 +31,16 @@
 	float:left;
 }
 
+.left {
+	float:left;
+	display: inline-block;
+}
+
+.right {
+	float:right;
+	display: inline-block;
+}
+
 .tweets {
 	padding-left: 10px;
 	padding-top: 3px;
@@ -39,4 +49,8 @@
 	color: gray;
 	border: 1px solid gray;
 	border-radius: 5px;
+}
+
+.tweet-list {
+	display: inline-block;
 }

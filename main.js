@@ -4,8 +4,8 @@ $(document).ready(() => {
   //$body.html('');
 
 
-  $('.clear-timeline').hide();
-  
+  //$('.clear-timeline').hide();
+
   $('.clear-timeline').on('click', () => {
     $('.left-bar').html('');
     $('.clear-timeline').toggle();
@@ -103,6 +103,7 @@ $(document).ready(() => {
   });
 
   $(".btn-link").on('click', event => {
+    $('.clear-timeline').html('<h5>Clear Timeline</h5>');
     $('.clear-timeline').show();
     getUserTweets(users[$(event.currentTarget).val()]);
   });

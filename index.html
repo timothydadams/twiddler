@@ -13,28 +13,33 @@
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-between">
       <div>
-      <button type="button" class="btn btn-outline-light" id="btn-timeline">Toggle Timeline</button>
-      <button type="button" class="btn btn-outline-light" id="btn-refresh">Refresh Feed</button>
+        <button type="button" class="btn btn-outline-light" id="btn-timeline">Toggle Timeline</button>
+        <button type="button" class="btn btn-outline-light" id="btn-refresh">Refresh Feed</button>
       </div>
       <div class="navbar-brand">Twiddler v.000001</div>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="text" placeholder="You can't tweet just yet...">
-          <button class="btn btn-warning" type="submit" id="btn-tweet">Tweet!</button>
-        </form>
-
+  <form class="form-inline">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">@</span>
+      </div>
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+  </form>
     </nav>
 
     <div class="followers">
         <h4>You're Following:</h4>
-<!--         <button type="button" class="btn btn-link" id="btn-mracus">mracus</button>
-        <button type="button" class="btn btn-link" id="btn-doug">douglascalhoon</button>
-        <button type="button" class="btn btn-link" id="btn-shawn">shawndrost</button>
-        <button type="button" class="btn btn-link" id="btn-shark">sharksforcheap</button> -->
-        <div class="clear-timeline"><h5>Clear Timeline</h5></div>
+        <div class="clear-timeline"></div>
         <div class="left-bar"></div>
     </div>
     <div class="feed">
-        <h4>Feed...</h3>
+        <div class="left"><h4>Feed...</h4></div>
+        <div class="right">
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="text" placeholder="You can't tweet just yet...">
+            <button class="btn btn-warning" type="submit" id="btn-tweet">Tweet!</button>
+          </form>
+        </div>
         <div class="tweet-list"></div>
     </div>
 
