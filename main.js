@@ -1,10 +1,6 @@
 $(document).ready(() => {
 
   var $body = $('body');
-  //$body.html('');
-
-
-  //$('.clear-timeline').hide();
 
   $('.clear-timeline').on('click', () => {
     $('.left-bar').html('');
@@ -32,6 +28,7 @@ $(document).ready(() => {
 
   renderFeed();
 
+  //build user btns for the timeline sidebar
   for (var i = 0; i < users.length; i++) {
     let $userBtn = $('<button></button>');
     //console.log(users[i]);
@@ -45,10 +42,9 @@ $(document).ready(() => {
     $(".followers h4").after($userBtn);
   }
 
-  
+  //display tweets by user (for timeline sidebar)
   function getUserTweets(author) {
     var userObj = streams.users[author];
-    console.log(userObj);
     $('.left-bar').html('');
 
     userObj.sort(function(a,b) {
@@ -68,7 +64,7 @@ $(document).ready(() => {
     }
   }
 
-
+  //change default date display to HH:MM:S instead of full timezone
   function getImprovedDate(date) {
     var hr = date.getHours();
     var min = date.getMinutes();
@@ -77,31 +73,22 @@ $(document).ready(() => {
   }
 
 
-  //getUserTweets('mracus');
-
-
-/*  getUserTweets('shawndrost');
-  getUserTweets('sharksforcheap');
-  getUserTweets('mracus');
-  getUserTweets('douglascalhoun');
-
-  setTimeout(function(){
-    getUserTweets('shawndrost');
-  }, 10000);*/
-
-
+  //allow timeline to be toggled/hidden
   $('#btn-timeline').on('click',()=>{
     $('.followers').toggle(600);
   });
 
+  //for future version giving user ability to tweet
   $('#btn-tweet').on('click',()=>{
     alert('This functionality has not been built yet.');
   });
 
+  //appends newly generated tweets (appending in descending order by time)
   $('#btn-refresh').on('click', ()=>{
     renderFeed();
   });
 
+  //give users ability to clear a users timeline
   $(".btn-link").on('click', event => {
     $('.clear-timeline').html('<h5>Clear Timeline</h5>');
     $('.clear-timeline').show();
@@ -109,30 +96,3 @@ $(document).ready(() => {
   });
 
 });
-
-
-/* JQUERY EFFECTS
-
-  $('.login-button').on('click', () => {
-    $('.login-form').show();
-  });
-  
-  $('.menu-button').on('mouseenter', () => {
-    $('.nav-menu').show()
-  })
-  
-  $('.nav-menu').on('mouseleave', () => {
-    $('.nav-menu').hide();
-  })
-  
-  $('.product-photo').on('mouseenter', event => {
-    $(event.currentTarget).addClass('photo-active')
-  }).on('mouseleave', event => {
-    $(event.currentTarget).removeClass('photo-active')
-  })
-
-
-
-
-
-*/
