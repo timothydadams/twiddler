@@ -13,7 +13,7 @@ $(document).ready(() => {
     for (let k = 0; k < tweetsFeed.length; k++) {
       let tweet = tweetsFeed[k];
       let $tweet = $('<div class="tweets"></div>');
-      $tweet.html(`${getImprovedDate(tweet.created_at)} @${tweet.user}: ${tweet.message}`);
+      $tweet.html(`${getImprovedDate(tweet.created_at)} @<b>${tweet.user}:</b> ${tweet.message}`);
       $tweet.appendTo(".tweet-list");
     }
 
