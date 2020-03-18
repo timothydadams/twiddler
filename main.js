@@ -1,18 +1,10 @@
 $(document).ready(() => {
 
-  var $body = $('body');
-
-  $('.clear-timeline').on('click', () => {
-    $('.left-bar').html('');
-    $('.clear-timeline').toggle();
-  });
-
   function renderFeed() {
     //clear the div each time function is called
     $('.tweet-list').html('');
     //get a new copy of streams.home data
     let tweetsFeed = streams.home;
-    console.log(tweetsFeed);
     //sort the data by descending times
     tweetsFeed.sort(function(a,b) {
       return b.created_at - a.created_at;
@@ -24,6 +16,12 @@ $(document).ready(() => {
       $tweet.html(`${getImprovedDate(tweet.created_at)} @${tweet.user}: ${tweet.message}`);
       $tweet.appendTo(".tweet-list");
     }
+
+    $('.tweets').on('mouseenter', event =>{
+      $(event.currentTarget).addClass('active');
+    }).on('mouseleave', event => {
+      $(event.currentTarget).removeClass('active');
+    });
   }
 
   renderFeed();
@@ -57,11 +55,13 @@ $(document).ready(() => {
       var date = getImprovedDate(userTweet.created_at);
       $addItem.html(`${date}: ${userTweet.message}`);
       $addItem.appendTo(".left-bar");
-      //for(let msg in allUserTweets) {
-      //console.log(userTweet.message, userTweet.created_at);
-      //}
-      //console.log(allUserTweets);
     }
+
+    $('.tweets').on('mouseenter', event =>{
+      $(event.currentTarget).addClass('active');
+    }).on('mouseleave', event => {
+      $(event.currentTarget).removeClass('active');
+    });
   }
 
   //change default date display to HH:MM:S instead of full timezone
@@ -72,6 +72,11 @@ $(document).ready(() => {
     return `[${hr}:${min}:${sec}]`;
   }
 
+  //clear user timeline
+  $('.clear-timeline').on('click', () => {
+    $('.left-bar').html('');
+    $('.clear-timeline').toggle();
+  });
 
   //allow timeline to be toggled/hidden
   $('#btn-timeline').on('click',()=>{
@@ -90,7 +95,7 @@ $(document).ready(() => {
 
   //give users ability to clear a users timeline
   $(".btn-link").on('click', event => {
-    $('.clear-timeline').html('<h5>Clear Timeline</h5>');
+    $('.clear-timeline').html('<h5>[CLEAR]</h5>');
     $('.clear-timeline').show();
     getUserTweets(users[$(event.currentTarget).val()]);
   });
